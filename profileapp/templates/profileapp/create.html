@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="text-center mx-auto my-5" style="max-width: 500px;">
+        <div>
+            <h4>Profile Create</h4>
+        </div>
+        <div>
+            <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <input type="hidden" name="pk" value="{{ request.user.pk }}"/>
+                {% bootstrap_form form %}
+                <br/>
+                <button type="submit" class="btn btn-dark rounded-pill col-6">저장</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <div class="text-center mx-auto my-3" style="max-width: 500px;">
+            <img class="mb-3" src="{{ target_project.image.url }}" alt=""
+                 style="height : 12rem; width:12rem; border-radius: 20rem; object-fit: cover;"/>
+            <h2>
+                {{ target_project.title }}
+                {% if user.is_authenticated %}
+                    {% if not subscription %}
+                        <a href="{% url 'subscribeapp:subscribe' %}?project_pk={{ target_project.pk }}"
+                           class="btn btn-danger rounded-pill">
+                            Subscribe
+                        </a>
+                    {% else %}
+                        <a href="{% url 'subscribeapp:subscribe' %}?project_pk={{ target_project.pk }}"
+                           class="btn btn-dark rounded-pill">
+                            UnSubscribe
+                        </a>
+                    {% endif %}
+                {% endif %}
+
+            </h2>
+            <h5>{{ target_project.description }}</h5>
+        </div>
+
+        <hr/>
+        <div>
+            {% include 'snippets/list_fragment.html' with article_list=object_list %}
+        </div>
+    </div>
+{% endblock %}

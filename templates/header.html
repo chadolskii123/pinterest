@@ -1,0 +1,32 @@
+<div class="my-4 text-center">
+    <div>
+        <h1 class="main_title">Pinch</h1>
+    </div>
+    <div class="mt-3">
+        <a href="{% url 'projectapp:list' %}" class="header_nav">
+            <span>Projects</span>
+        </a>
+        <a href="{% url 'subscribeapp:list' %}" class="header_nav">
+            <span>Subscription</span>
+        </a>
+        <a href="{% url 'articleapp:list' %}" class="header_nav">
+            <span>Articles</span>
+        </a>
+        {% if not user.is_authenticated %}
+            <a href="{% url 'accountapp:login' %}" class="header_nav">
+                <span>login</span>
+            </a>
+            <a href="{% url 'accountapp:create' %}" class="header_nav">
+                <span>sign up</span>
+            </a>
+        {% else %}
+
+            <a href="{% url 'accountapp:detail' pk=user.pk %}" class="header_nav">
+                <span>My page</span>
+            </a>
+            <a href="{% url 'accountapp:logout' %}?next={{ request.path }}" class="header_nav">
+                <span>logout</span>
+            </a>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="text-center mx-auto my-3" style="max-width: 500px;">
+        <div>
+
+            {% if target_user.profile %}
+                <img class="mb-3" src="{{ target_user.profile.image.url }}" alt=""
+                     style="height : 12rem; width:12rem; border-radius: 20rem; object-fit: cover;"/>
+
+                <h2>
+                    {{ target_user.profile.nickname }}
+                    {% if target_user == user %}
+                        <a class="material-icons" href="{% url 'profileapp:update' pk=target_user.profile.pk %}"
+                           style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .4rem;">
+                            edit
+                        </a>
+                    {% endif %}
+                </h2>
+                <h5>{{ target_user.profile.message }}</h5>
+            {% else %}
+                {% if target_user == user %}
+
+                    <a class="material-icons" href="{% url 'profileapp:create' %}"
+                       style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .4rem;">
+                        build_circle
+                    </a>
+                {% else %}
+                    <h2>닉네임 미설정</h2>
+
+                {% endif %}
+            {% endif %}
+            {% if target_user == user %}
+                <a class="material-icons" href="{% url 'accountapp:update' pk=target_user.pk %}"
+                   style="box-shadow: 0 0 4px #ccc; border-radius: 10rem;">
+                    settings
+                </a>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <a class="material-icons" href="{% url 'accountapp:delete' pk=target_user.pk %}"
+                   style="box-shadow: 0 0 4px darkred; border-radius: 10rem; color:darkred;">
+                    cancel
+                </a>
+            {% endif %}
+
+        </div>
+    </div>
+    <hr/>
+    <div>
+        {% include 'snippets/list_fragment.html' with article_list=object_list %}
+    </div>
+{% endblock %}

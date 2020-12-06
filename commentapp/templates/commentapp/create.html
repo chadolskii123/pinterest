@@ -1,0 +1,20 @@
+{% load bootstrap4 %}
+<div class="text-center mx-auto my-3" style="max-width: 500px;">
+    <div>
+        <h4>Comments</h4>
+    </div>
+    <div>
+        <form action="{% url 'commentapp:create' %}" method="POST">{% csrf_token %}
+            {% bootstrap_form form %}
+
+            {% if user.is_authenticated %}
+                <input type="hidden" name="article_pk" value="{{ article.pk }}"/>
+                <button type="submit" class="btn btn-dark rounded-pill col-6">등록</button>
+            {% else %}
+                <a href="{% url 'accountapp:login' %}?next={{ request.path }}" class="btn btn-dark rounded-pill col-6">
+                    Login
+                </a>
+            {% endif %}
+        </form>
+    </div>
+</div>

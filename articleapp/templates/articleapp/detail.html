@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="text-center mx-auto my-3" style="max-width: 700px;">
+        <h1>{{ target_article.title }}</h1>
+    <h3>{{ target_article.writer.profile.nickname }}</h3>
+        <img src="{{ target_article.image.url }}" alt="" style="width:100%; border-radius: 1rem;">
+        <div class="text-left my-3">
+            {{ target_article.content | safe }}
+        </div>
+        {% if target_article.writer == request.user %}
+            <a href="{% url 'articleapp:update' pk=target_article.pk %}" class="btn btn-secondary rounded-pill col3">
+               Update
+            </a>
+            <a href="{% url 'articleapp:delete' pk=target_article.pk %}" class="btn btn-danger rounded-pill col3">
+               Delete
+            </a>
+        {% endif %}
+    <hr/>
+    {% for comment in target_article.comment.all %}
+        {% include 'commentapp/detail.html' with comment=comment %}
+    {% endfor %}
+
+    {% include 'commentapp/create.html' with article=target_article %}
+    </div>
+
+{% endblock %}
