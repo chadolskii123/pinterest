@@ -24,7 +24,7 @@ class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
     # reverse와 reverse_lazy => 클래스 base 뷰에서는 reverse_lazy를 사용해야 한다.
-    success_url = reverse_lazy('accountapp:home')
+    success_url = reverse_lazy('home')
     template_name = "accountapp/create.html"
 
 

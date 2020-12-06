@@ -21,14 +21,14 @@ from django.urls import path, include
 from articleapp.views import ArticleListView
 
 urlpatterns = [
-                  path('', ArticleListView.as_view(), name='home'),
-                  path('admin/', admin.site.urls),
-                  path('accounts/', include('accountapp.urls')),
-                  path('profiles/', include('profileapp.urls')),
-                  path('articles/', include('articleapp.urls')),
-                  path('comments/', include('commentapp.urls')),
-                  path('projects/', include('projectapp.urls')),
-                  path('subscribe/', include('subscribeapp.urls')),
+      path('', ArticleListView.as_view(), name='home'),
+      path('admin/', admin.site.urls),
+      path('accounts/', include('accountapp.urls')),
+      path('profiles/', include('profileapp.urls')),
+      path('articles/', include('articleapp.urls')),
+      path('comments/', include('commentapp.urls')),
+      path('projects/', include('projectapp.urls')),
+      path('subscribe/', include('subscribeapp.urls')),
 
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # +와 같이 미디어 설정 필요함
