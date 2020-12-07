@@ -10,7 +10,7 @@ RUN pip install --upgrade pip
 
 RUN pip install -r requirements.txt
 
-RN pip install gunicorn
+RUN pip install gunicorn
 
 RUN echo "SECRET_KEY=^wxvla^)#)zfe)svtnwxit%5n55m!978*@^ch95m40t+6dhg0w" > .env
 

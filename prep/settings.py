@@ -139,8 +139,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
-LOGIN_REDIRECT_URL = '/accounts'
-LOGOUT_REDIRECT_URL = '/accounts'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # pillow 라이브러리가 있어야 미디어를 관리할 수 있음
 # media 이하의 주소를 적어야 하도록 설정해줌
