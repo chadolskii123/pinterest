@@ -1,7 +1,5 @@
 from .base import *
 
-from prep.settings.base import BASE_DIR
-
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -26,7 +24,7 @@ ALLOWED_HOSTS = ['*']
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+#
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
