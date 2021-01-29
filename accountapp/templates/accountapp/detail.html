@@ -31,6 +31,7 @@
 
                 {% endif %}
             {% endif %}
+            <br>
             {% if target_user == user %}
                 <a class="material-icons" href="{% url 'accountapp:update' pk=target_user.pk %}"
                    style="box-shadow: 0 0 4px #ccc; border-radius: 10rem;">
