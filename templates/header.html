@@ -22,10 +22,10 @@
         {% else %}
 
             <a href="{% url 'accountapp:detail' pk=user.pk %}" class="header_nav">
-                <span>My page</span>
+                <span>My</span>
             </a>
             <a href="{% url 'accountapp:logout' %}?next={{ request.path }}" class="header_nav">
-                <span>logout</span>
+                <span>OUT</span>
             </a>
         {% endif %}
     </div>
