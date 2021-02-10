@@ -11,6 +11,7 @@ RUN pip install -r requirements.txt
 RUN pip install gunicorn
 
 RUN echo "PININININ"
+RUN echo "PININININ"
 
 RUN pip install mysqlclient
 
