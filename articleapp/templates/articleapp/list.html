@@ -1,54 +1,50 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-    <style>
+{% extends 'base.html' %} {% load static %} {% block content %}
+<style>
+  .container {
+    padding: 0;
+    margin: 0 auto;
+  }
 
-        .container {
-            padding: 0;
-            margin: 0 auto;
-        }
+  .container a {
+    width: 40%;
+    max-width: 300px;
+  }
 
-        .container a {
-            width: 40%;
-            max-width: 300px;
-        }
+  .container div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+  }
 
-        .container div {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 1rem;
-        }
+  .container img {
+    width: 100%;
+    border-radius: 1rem;
+  }
+</style>
+{% if article_list %}
+<div class="container">
+  {% for article in article_list %}
+  <a href="{% url 'articleapp:detail' pk=article.pk %}">
+    {% include 'articleapp/snippets/card.html' with article=article %}
+  </a>
+  {% endfor %}
+</div>
+<script src="{% static 'js/magicgrid.js' %}"></script>
 
-        .container img {
-            width: 100%;
-            border-radius: 1rem;
-        }
+{% else %}
+<div class="text-center">
+  <h1>아무것도,,, 없었다...</h1>
+</div>
+{% endif %} {% include 'articleapp/snippets/pagination.html' with
+page_obj=page_obj %}
 
-    </style>
-    {% if article_list %}
-        <div class="container">
-
-            {% for article in article_list %}
-                <a href="{% url 'articleapp:detail' pk=article.pk %}">
-                    {% include 'articleapp/snippets/card.html' with article=article %}
-                </a>
-            {% endfor %}
-        </div>
-        <script src="{% static 'js/magicgrid.js' %}"></script>
-
-
-    {% else %}
-        <div class="text-center">
-            <h1>아무것도,,, 없었다...</h1>
-        </div>
-    {% endif %}
-
-    {% include 'articleapp/snippets/pagination.html' with page_obj=page_obj %}
-
-    <div class="text-center">
-        <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill my-3 px-3">
-            작은거 만들기
-        </a>
-    </div>
+<div class="text-center">
+  <a
+    href="{% url 'articleapp:create' %}"
+    class="btn btn-dark rounded-pill my-3 px-3"
+  >
+    Article 만들기
+  </a>
+</div>
 {% endblock %}

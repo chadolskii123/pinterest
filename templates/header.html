@@ -1,32 +1,35 @@
 <div class="my-4 text-center">
-    <div>
-        <h1 class="main_title">Chadol</h1>
-    </div>
-    <div class="mt-3">
-        <a href="{% url 'projectapp:list' %}" class="header_nav">
-            <span>크게</span>
-        </a>
-        <!-- <a href="{% url 'subscribeapp:list' %}" class="header_nav">
+  <div>
+    <h1 class="main_title">Chadol</h1>
+  </div>
+  <div class="mt-3">
+    <a href="{% url 'projectapp:list' %}" class="header_nav">
+      <span>Project</span>
+    </a>
+    <!-- <a href="{% url 'subscribeapp:list' %}" class="header_nav">
             <span>Subscription</span>
         </a> -->
-        <a href="{% url 'articleapp:list' %}" class="header_nav">
-            <span>작게</span>
-        </a>
-        {% if not user.is_authenticated %}
-            <a href="{% url 'accountapp:login' %}" class="header_nav">
-                <span>로그인</span>
-            </a>
-            <a href="{% url 'accountapp:create' %}" class="header_nav">
-                <span>가입</span>
-            </a>
-        {% else %}
+    <a href="{% url 'articleapp:list' %}" class="header_nav">
+      <span>Article</span>
+    </a>
+    {% if not user.is_authenticated %}
+    <a href="{% url 'accountapp:login' %}" class="header_nav">
+      <span>로그인</span>
+    </a>
+    <a href="{% url 'accountapp:create' %}" class="header_nav">
+      <span>가입</span>
+    </a>
+    {% else %}
 
-            <a href="{% url 'accountapp:detail' pk=user.pk %}" class="header_nav">
-                <span>My</span>
-            </a>
-            <a href="{% url 'accountapp:logout' %}?next={{ request.path }}" class="header_nav">
-                <span>OUT</span>
-            </a>
-        {% endif %}
-    </div>
+    <a href="{% url 'accountapp:detail' pk=user.pk %}" class="header_nav">
+      <span>My</span>
+    </a>
+    <a
+      href="{% url 'accountapp:logout' %}?next={{ request.path }}"
+      class="header_nav"
+    >
+      <span>OUT</span>
+    </a>
+    {% endif %}
+  </div>
 </div>
