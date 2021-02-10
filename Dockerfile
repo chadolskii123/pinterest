@@ -6,12 +6,11 @@ RUN git clone https://github.com/chadolskii123/pinterest.git
 
 WORKDIR /home/pinterest/
 
+RUN echo "asdfa"
+
 RUN pip install -r requirements.txt
 
 RUN pip install gunicorn
-
-RUN echo "PININININ"
-RUN echo "PININININ"
 
 RUN pip install mysqlclient
 
